@@ -1,0 +1,6 @@
+ofek yemini
+
+In order to solve this patching exercise, I first downloaded the Cutter software as instructed in the task. I also downloaded the patchwork binary file from the module. Then, I used the 'strings patchwork' command in the terminal to display all the strings and function names within the binary. While examining the output, I noticed a function named 'give_flag,' which seemed like a promising clue. Using Cutter, I searched for this function and found it, along with the main function that calls it. However, I observed that there was a 'cmp' statement followed by a 'jump equal' instruction before the call to 'give_flag,' which prevented the execution from reaching the 'give_flag' function. To address this, I accessed the Hexdump option in Cutter and located the line containing the 'jump equal' statement, represented by the opcode '74,' which stands for 'je.' Since I wanted the opposite behavior, I patched it to '75,' representing 'jump not equal' (jne). After saving the changes, I ran the patched binary, and it successfully provided me with the secret flag:
+PCTF{JuMp_uP_4nd_g3t_d0Wn}
+
+
